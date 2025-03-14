@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Noto Sans SC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background: #222430;
+  padding: 0;
+}
+
+@layer component {
+  .description > p {
+    @apply py-3;
+    color: #efefef;
+  }
+
+  .description > h1,
+  .description > h2,
+  .description > h3,
+  .description > h4,
+  .description > h5,
+  .description > h6 {
+    @apply text-white text-2xl font-bold py-3;
+  }
+
+  .logo {
+    @apply text-white text-xl px-4 pr-8;
+  }
+
+  code {
+    @apply text-purple-500 px-1 bg-black/20 mx-1 rounded-md;
+  }
+
+  .navbar-base {
+    @apply bg-black/60 h-18 flex-row absolute w-full top-0 items-center;
+  }
+
+  .nav-button {
+    @apply text-white/90 rounded-md px-6 py-2 cursor-pointer;
+  }
+
+  .nav-button:hover {
+    @apply bg-white/10;
+  }
+
+  .nav-button.active {
+    @apply text-white;
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  .recommend-bubble {
+    @apply bg-white/20 text-zinc-300 text-sm px-2 py-1 rounded-full my-2 cursor-pointer;
+  }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border: none;
+    outline: none;
+  }
+
+  .input-container > input {
+    @apply bg-white/10 border border-transparent border-solid text-zinc-300 p-2 rounded-md w-full my-2 flex-grow duration-300 box-border;
+  }
+
+  .input-container > input:focus {
+    @apply bg-zinc-700 border-white/40;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    outline: none;
+  }
+
+  .input-container > p {
+    @apply text-zinc-200;
+  }
+
+  .card {
+    background-color: transparent;
+    --width: 256px;
+    width: var(--width);
+    height: calc(var(--width) * 2);
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+
+  .card-front {
+    cursor: pointer;
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+  }
+
+  .card-back.reversed {
+    transform: rotateX(180deg);
+  }
+
+  .card-inner.flipped {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+  }
+
+  .card-text {
+    @apply text-zinc-300 text-3xl font-thin text-center pt-8;
+    opacity: 0;
+  }
+
+  .card-text.flipped {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+}

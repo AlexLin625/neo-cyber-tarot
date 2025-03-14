@@ -47,6 +47,7 @@ export class initApp {
       } as SpreadState)
     );
     // Fetch these cards.
+    await fetch("/img/back.jpg");
     await Promise.all(
       selectedTarots.map((tarot) => {
         TarotDB.downloadImage(tarot.name);

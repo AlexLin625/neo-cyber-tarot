@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 export default function AboutView(): React.ReactElement {
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="description max-w-lg pt-8">
+      <div className="description max-w-lg pt-8 px-6">
         <Markdown>
           {`
 

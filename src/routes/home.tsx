@@ -20,6 +20,9 @@ const recommendedQuestions = [
 
 export default function HomeView(): React.ReactElement {
   // Define stores
+  const downloadState = useSelector(
+    (state: RootState) => state.downloadState
+  );
   const userState = useSelector(
     (state: RootState) => state.userState
   );
@@ -51,6 +54,8 @@ export default function HomeView(): React.ReactElement {
   };
 
   const renderQuestionInput = () => {
+    const isSpreadReady = downloadState !== "init";
+
     return (
       <div className="w-full h-full pt-48 px-8 flex flex-col items-center">
         <div className="input-container pt-8 pb-24 max-w-xl">
@@ -71,10 +76,16 @@ export default function HomeView(): React.ReactElement {
               }}
             />
             <button
-              className="py-2 px-4 ml-4 rounded-full text-zinc-200 cursor-pointer bg-zinc-900 my-3 text-nowrap"
+              className={
+                "py-2 px-4 ml-4 rounded-full cursor-pointer bg-zinc-900 my-3 text-nowrap " +
+                (isSpreadReady
+                  ? "text-zinc-200"
+                  : "text-zinc-400")
+              }
               onClick={() => dispatch(setFinishedAnswer())}
+              disabled={!isSpreadReady}
             >
-              大师我悟了!
+              {isSpreadReady ? "大师我悟了!" : "等待下载"}
             </button>
           </div>
           {renderRecommendedQuestions()}
